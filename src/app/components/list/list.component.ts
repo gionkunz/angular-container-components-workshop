@@ -8,8 +8,9 @@ export class ListComponent {
   list = ['Apples', 'Bananas', 'Strawberries', 'Blueberries', 'Kiwis'];
   @ViewChild('createInput') createInput: ElementRef<HTMLInputElement>;
   
-  onCreateItem(item: string) {
-    this.list.push(item);
+  onCreateItem() {
+    this.list.push(this.createInput.nativeElement.value);
+    this.createInput.nativeElement.value = '';
   }
   
   onRemoveItem(index: number) {
@@ -18,6 +19,5 @@ export class ListComponent {
   
   onRemoveAllItems() {
     this.list.length = 0;
-    this.createInput.nativeElement.value = '';
   }
 }
